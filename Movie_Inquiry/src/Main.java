@@ -5,13 +5,45 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Movie?" +
-                    "useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false" +
-                    "&serverTimezone=UTC", "root", "pubugi0314");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String sql = "INSERT INTO movies (title, genre, runtime, year, rating, actors, rate, release_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String url = "jdbc:mysql://localhost:3306/";
+            String user = "root";
+            String password = "pubugi0314";
+            Connection conn = DriverManager.getConnection(url, user, password);
+            DatabaseMetaData dbm = conn.getMetaData();
+            ResultSet schemas = dbm.getSchemas();
+            boolean existSchema = false;
 
-            PreparedStatement pstmt = connection.prepareStatement(sql);
+            // 스키마 생성
+            String schemaName = "Movie_Inquiry";
+            String schema = "CREATE SCHEMA IF NOT EXISTS " + schemaName;
+            PreparedStatement pstmt = conn.prepareStatement(schema);
+            pstmt.execute();
+            pstmt.close();
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + schemaName, user, password);
+
+            // 테이블 생성
+            String tableName = "movies";
+            String create = "CREATE TABLE IF NOT EXISTS "+ tableName + "(" +
+                        "serial_num INT NOT NULL AUTO_INCREMENT," +
+                        "title VARCHAR(45) NOT NULL," +
+                        "genre VARCHAR(5)," +
+                        "runtime INT," +
+                        "year INT," +
+                        "rating NUMERIC(3,2)," +
+                        "actors VARCHAR(45)," +
+                        "rate VARCHAR(7)," +
+                        "release_status BOOLEAN NOT NULL," +
+                        "PRIMARY KEY(serial_num, title)," +
+                        "INDEX idx_movies_serial(serial_num) USING BTREE)";
+
+            pstmt = conn.prepareStatement(create);
+            pstmt.execute();
+
+            // 데이터 삽입
+            String insert = "INSERT INTO movies (title, genre, runtime, year, rating, actors, rate, release_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            pstmt = conn.prepareStatement(insert);
 
             Scanner scanner = new Scanner(System.in);
 
@@ -71,12 +103,13 @@ public class Main {
                 pstmt.executeUpdate();
             }
 
-
             pstmt.close();
-            connection.close();
+            conn.close();
 
         } catch (SQLException e) {
             System.out.println("SQLExeption: " + e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }

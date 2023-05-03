@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5d9441c-ebc7-480c-9c58-e803d008181a" name="Changes" comment="homework">
+      <change afterPath="$PROJECT_DIR$/Movie_Inquiry/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/jpa-buddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/libraries/mysql_connector_j_8_0_32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/DataInsert.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/Movie_Inquiry.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/OTT contents.rtf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/out/production/DataInsert/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/out/production/DataInsert/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataInsert/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/libraries/mysql_connector_j_8_0_32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,17 +57,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/Users/yunhyemi/Documents/데이터베이스시스템 설계과제",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yunhyemi/Documents/데이터베이스시스템 설계과제&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
