@@ -5,28 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5d9441c-ebc7-480c-9c58-e803d008181a" name="Changes" comment="homework">
-      <change afterPath="$PROJECT_DIR$/Movie_Inquiry/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/jpa-buddy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/libraries/mysql_connector_j_8_0_32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/DataInsert.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/Movie_Inquiry.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/OTT contents.rtf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/out/production/DataInsert/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/out/production/DataInsert/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataInsert/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/libraries/mysql_connector_j_8_0_32.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie_Inquiry/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie_Inquiry/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
