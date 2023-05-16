@@ -1,0 +1,40 @@
+Index: Movie_Inquiry/src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Movie_Inquiry/src/Main.java b/Movie_Inquiry/src/Main.java
+--- a/Movie_Inquiry/src/Main.java	
++++ b/Movie_Inquiry/src/Main.java	
+@@ -8,7 +8,7 @@
+ 
+     private static Connection conn;
+     static Scanner scanner = new Scanner(System.in);
+-    static int numRecords = 10000000;
++    static int numRecords = 20000000;
+ 
+ 
+     static void createTable(String s) {
+@@ -47,13 +47,7 @@
+ 
+             String insert = "INSERT INTO "+ s + "(title, genre, runtime, year, rating, actors, rate, release_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+ 
+-            DatabaseMetaData metaData = conn.getMetaData();
+-            ResultSet resultSet = metaData.getColumns(null, null, s, null);
+ 
+-            while (resultSet.next()) {
+-                String dataType = resultSet.getString("DATA_TYPE");
+-//                if (dataType.equals(""))
+-            }
+ 
+             pstmt.executeUpdate();
+             pstmt.close();
+@@ -80,7 +74,7 @@
+             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + schemaName, user, password);
+ 
+             while (true) {
+-                System.out.println("1.테이블 생성\n2.레코드 삽입\n3.질의처리");
++                System.out.println("1.테이블 생성\n2.레코드 삽입\n3.비트맵인덱스 생성\n4.질의처리");
+                 String tableName = null;
+                 if (scanner.next().equals("1")) {
+                     tableName = scanner.next();

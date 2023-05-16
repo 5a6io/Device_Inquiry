@@ -1,6 +1,5 @@
-import java.io.FileOutputStream;
+import java.io.*;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,6 +9,7 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static int numRecords = 10000000;
 
+    static String[] genre = {"액션", "애니메이션", "드라마", "모험", "코미디", "범죄", "로맨스", "스릴러", "공포", "판타지", "미스터리"};
 
     static void createTable(String s) {
         try {
@@ -43,28 +43,120 @@ public class Main {
 
     static void insert(String s){
         try {
-            PreparedStatement pstmt = conn.prepareStatement(s);
+            String insert = "INSERT INTO "+ s + "(title, genre, runtime, year, rating, rate, release_status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(insert);
 
-            String insert = "INSERT INTO "+ s + "(title, genre, runtime, year, rating, actors, rate, release_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            File file = new File("Movie_Inquiry\\movies.txt");
 
-            DatabaseMetaData metaData = conn.getMetaData();
-            ResultSet resultSet = metaData.getColumns(null, null, s, null);
+            try {
+                for (int i = 0; i < 1000; i++) {
+                    BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+                    String line = bufferedReader.readLine();
+                    if (i != 0) {
+                        while (line != null) {
+                            String[] words = line.split(",");
+                            if (!words[0].isBlank())
+                                pstmt.setString(1, words[0] + i);
+                            else
+                                pstmt.setNull(1, Types.CHAR);
 
-            while (resultSet.next()) {
-                String dataType = resultSet.getString("DATA_TYPE");
-//                if (dataType.equals(""))
+                            if (!words[1].isBlank())
+                                pstmt.setString(2, words[1]);
+                            else
+                                pstmt.setNull(2, Types.CHAR);
+
+                            if (!words[2].isBlank())
+                                pstmt.setInt(3, Integer.parseInt(words[2]));
+                            else
+                                pstmt.setNull(3, Types.INTEGER);
+
+                            if (!words[3].isBlank())
+                                pstmt.setInt(4, Integer.parseInt(words[3]));
+                            else
+                                pstmt.setNull(4, Types.INTEGER);
+
+                            if (!words[4].isBlank()) {
+                                Random random = new Random();
+                                double rating = 0 + (10 - 0) * random.nextDouble();
+                                pstmt.setDouble(5, rating);
+                            } else
+                                pstmt.setNull(5, Types.DOUBLE);
+
+                            if (!words[5].isBlank()) {
+                                Random random = new Random();
+                                int idx = 0 + (10 - 0) * random.nextInt();
+                                pstmt.setString(6, genre[idx]);
+                            } else {
+                                pstmt.setNull(6, Types.CHAR);
+                            }
+
+                            Random random = new Random();
+                            boolean status = random.nextBoolean();
+
+                            pstmt.setBoolean(7, status);
+
+                            pstmt.executeUpdate();
+                        }
+
+                        bufferedReader.reset();
+
+                    } else {
+                        while (line != null) {
+                            String[] words = line.split(",");
+                            if (!words[0].isBlank())
+                                pstmt.setString(1, words[0]);
+                            else
+                                pstmt.setNull(1, Types.CHAR);
+
+                            if (!words[1].isBlank())
+                                pstmt.setString(2, words[1]);
+                            else
+                                pstmt.setNull(2, Types.CHAR);
+
+                            if (!words[2].isBlank())
+                                pstmt.setInt(3, Integer.parseInt(words[2]));
+                            else
+                                pstmt.setNull(3, Types.INTEGER);
+
+                            if (!words[3].isBlank())
+                                pstmt.setInt(4, Integer.parseInt(words[3]));
+                            else
+                                pstmt.setNull(4, Types.INTEGER);
+
+                            if (!words[4].isBlank())
+                                pstmt.setDouble(5, Double.parseDouble(words[4]));
+                            else
+                                pstmt.setNull(5, Types.DOUBLE);
+
+                            if (!words[5].isBlank())
+                                pstmt.setString(6, words[5]);
+                            else
+                                pstmt.setNull(6, Types.CHAR);
+
+                            pstmt.setBoolean(7, Boolean.parseBoolean(words[6]));
+
+                            pstmt.executeUpdate();
+                        }
+
+                        bufferedReader.reset();
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-
-            pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
         }
+
+        return;
     }
     public static void main(String[] args) {
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+
 
             String url = "jdbc:mysql://localhost:3306/";
             String user = "root";
@@ -80,28 +172,26 @@ public class Main {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + schemaName, user, password);
 
             while (true) {
-                System.out.println("1.테이블 생성\n2.레코드 삽입\n3.질의처리");
+                System.out.println("1.테이블 생성\n2.레코드 삽입\n3.비트맵인덱스 생성\n4.질의처리");
                 String tableName = null;
-                if (scanner.next().equals("1")) {
+                String select = scanner.next();
+                if (select.equals("1")) {
+                    System.out.println("테이블명 입력:");
                     tableName = scanner.next();
                     createTable(tableName);
-                } else if (scanner.next().equals("2")) {
+                } else if (select.equals("2")) {
                     // 데이터 삽입
+                    System.out.println("테이블명 입력:");
                     tableName = scanner.next();
                     insert(tableName);
 
-                    DatabaseMetaData metaData = conn.getMetaData();
-                    metaData.getColumns(null, null, tableName, null);
+//                    ResultSet resultSet = pstmt.getResultSet();
+//
+//                    int[] genreBitmap = new int[numRecords / 32 + 1];
+//                    int[] releaseBitmap = new int[numRecords / 32 + 1];
+//
 
-                    ResultSet resultSet = pstmt.getResultSet();
-
-                    int[] genreBitmap = new int[numRecords / 32 + 1];
-                    int[] releaseBitmap = new int[numRecords / 32 + 1];
-
-                    FileOutputStream fileOutputStream;
-
-
-                } else if (scanner.next().equals("3")) {
+                } else if (select.equals("3")) {
 
                 } else {
                     conn.close();
@@ -112,9 +202,6 @@ public class Main {
 
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
-
     }
 }
