@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Movie_Inquiry/Movie_Inquiry.iml" filepath="$PROJECT_DIR$/Movie_Inquiry/Movie_Inquiry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Device_Inquiry/Device_Inquiry.iml" filepath="$PROJECT_DIR$/Device_Inquiry/Device_Inquiry.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/데이터베이스시스템 설계과제.iml" filepath="$PROJECT_DIR$/.idea/데이터베이스시스템 설계과제.iml" />
     </modules>
   </component>

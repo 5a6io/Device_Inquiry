@@ -5,23 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5d9441c-ebc7-480c-9c58-e803d008181a" name="Changes" comment="homework">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_321.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-13__7_53__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-13__7_53__Changes_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-13_오후_7_53_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-13_오후_7_53_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Movie_Inquiry/movies.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Device_Inquiry/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Device_Inquiry/src/Record.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-13__7_53__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-13_오후_7_53_[Changes]1/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/데이터베이스시스템 설계과제.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/데이터베이스시스템 설계과제.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/Movie_Inquiry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/Movie_Inquiry.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Movie_Inquiry/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/moives.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Movie_Inquiry/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Movie_Inquiry/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Device_Inquiry/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Device_Inquiry/.idea/jpa-buddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/.idea/libraries/mysql_connector_j_8_0_32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Device_Inquiry/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Device_Inquiry/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Device_Inquiry/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Device_Inquiry/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/Movie_Inquiry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Device_Inquiry/Device_Inquiry.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/movies.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/out/production/DataInsert/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Movie_Inquiry/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataInsert/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Movie_Inquiry/Main.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,14 +66,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Yun Hye-mi/Downloads/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar",
-    "project.structure.last.edited": "Problems",
+    "last_opened_file_path": "/Users/yunhyemi/Documents/DatabaseSystem",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Yun Hye-mi\Documents\GitHub\DatabaseSystem\Movie_Inquiry" />
       <recent name="C:\Users\Yun Hye-mi\Documents\GitHub\DatabaseSystem\Movie_Inquiry\src" />
