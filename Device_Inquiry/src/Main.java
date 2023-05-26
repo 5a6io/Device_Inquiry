@@ -1,6 +1,5 @@
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.*;
 
@@ -12,12 +11,12 @@ public class Main {
     static int totalRecords = 100000; // 전체 레코드 수
     static int bufferSize = 100; // 버퍼 크기
     static int totalBlocks = 1000; // 전체 블록 수
-    private static String[] manufacturerList = {"Samsung", "Apple", "Google", "Xiaomi"};
-    private static String[] appleDeviceList = {"", "SE", " Pro", " Pro Max"};
-    private static String[] samsungDeviceList = {"Galaxy S", "Galaxy Z 플립", "Galaxy Z 폴드", "Galaxy A"};
-    private static String[] samsungDeviceList2 = {"", "+", " Ultra"};
-    private static String[] googleDeviceList = {"Pixel XL ", "Pixel "};
-    private static String[] xiaomiDeviceList = {"Redmi ", "Redmi Note "};
+    private static final String[] manufacturerList = {"Samsung", "Apple", "Google", "Xiaomi"};
+    private static final String[] appleDeviceList = {"", "SE", " Pro", " Pro Max"};
+    private static final String[] samsungDeviceList = {"Galaxy S", "Galaxy Z 플립", "Galaxy Z 폴드", "Galaxy A"};
+    private static final String[] samsungDeviceList2 = {"", "+", " Ultra"};
+    private static final String[] googleDeviceList = {"Pixel XL ", "Pixel "};
+    private static final String[] xiaomiDeviceList = {"Redmi ", "Redmi Note "};
 
     static void createTable(String s) {
         try {
@@ -137,76 +136,87 @@ public class Main {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.execute();
 
-            String manufacturer = "create table if not exists manufacturerBitmapIndex(samsungIndex bit(1), appleIndex bit(1), googleIndex bit(1), xiaomiIndex bit(1))";
-            String price = "create table if not exists priceBitmapIndex(less100Index bit(1), exceed100Index bit(1), exceed150Index bit(1), exceed200Index bit(1))";
-            PreparedStatement manufacturerPstmt = conn.prepareStatement(manufacturer);
-            manufacturerPstmt.execute();
-            PreparedStatement prictPstmt = conn.prepareStatement(price);
-            prictPstmt.execute();
-
-            String insertManufacturer = "insert into manufacturerBitmapIndex(samsungIndex,appleIndex,googleIndex,xiaomiIndex) values (?,?,?,?)";
-            String insertPrice = "insert into priceBitmapIndex(less100Index,exceed100Index,exceed150Index,exceed200Index) values (?,?,?,?)";
-            manufacturerPstmt = conn.prepareStatement(insertManufacturer);
-            prictPstmt = conn.prepareStatement(insertPrice);
-
             ResultSet resultSet = pstmt.getResultSet();
+            BufferedWriter samsungIndex = new BufferedWriter(new FileWriter("samsungIndex.txt", StandardCharsets.UTF_8));
+            BufferedWriter appleIndex = new BufferedWriter(new FileWriter("appleIndex.txt", StandardCharsets.UTF_8));
+            BufferedWriter googleIndex = new BufferedWriter(new FileWriter("googleIndex.txt", StandardCharsets.UTF_8));
+            BufferedWriter xiaomiIndex = new BufferedWriter(new FileWriter("xiaomiIndex.txt", StandardCharsets.UTF_8));
+            BufferedWriter less100Index = new BufferedWriter(new FileWriter("less100Index.txt", StandardCharsets.UTF_8));
+            BufferedWriter exceed100Index = new BufferedWriter(new FileWriter("exceed100Index.txt", StandardCharsets.UTF_8));
+            BufferedWriter exceed150Index = new BufferedWriter(new FileWriter("exceed150Index.txt", StandardCharsets.UTF_8));
+            BufferedWriter exceed200Index = new BufferedWriter(new FileWriter("exceed200Index.txt", StandardCharsets.UTF_8));
 
             while (resultSet.next()) {
                 if (resultSet.getString(1).equals(manufacturerList[0])){
-                    manufacturerPstmt.setInt(1, 0b1);
-                    manufacturerPstmt.setInt(2, 0b0);
-                    manufacturerPstmt.setInt(3, 0b0);
-                    manufacturerPstmt.setInt(4, 0b0);
+                    samsungIndex.write("1");
+                    appleIndex.write("0");
+                    googleIndex.write("0");
+                    xiaomiIndex.write("0");
                 } else if (resultSet.getString(1).equals(manufacturerList[1])) {
-                    manufacturerPstmt.setInt(1, 0b0);
-                    manufacturerPstmt.setInt(2, 0b1);
-                    manufacturerPstmt.setInt(3, 0b0);
-                    manufacturerPstmt.setInt(4, 0b0);
+                    samsungIndex.write("0");
+                    appleIndex.write("1");
+                    googleIndex.write("0");
+                    xiaomiIndex.write("0");
                 } else if (resultSet.getString(1).equals(manufacturerList[2])) {
-                    manufacturerPstmt.setInt(1, 0b0);
-                    manufacturerPstmt.setInt(2, 0b0);
-                    manufacturerPstmt.setInt(3, 0b1);
-                    manufacturerPstmt.setInt(4, 0b0);
-                } else {
-                    manufacturerPstmt.setInt(1, 0b0);
-                    manufacturerPstmt.setInt(2, 0b0);
-                    manufacturerPstmt.setInt(3, 0b0);
-                    manufacturerPstmt.setInt(4, 0b1);
+                    samsungIndex.write("0");
+                    appleIndex.write("0");
+                    googleIndex.write("1");
+                    xiaomiIndex.write("0");
+                } else if (resultSet.getString(1).equals(manufacturerList[3])){
+                    samsungIndex.write("0");
+                    appleIndex.write("0");
+                    googleIndex.write("0");
+                    xiaomiIndex.write("1");
                 }
 
                 if (resultSet.getFloat(2) < 100.0f) {
-                    prictPstmt.setInt(1, 0b1);
-                    prictPstmt.setInt(2, 0b0);
-                    prictPstmt.setInt(3, 0b0);
-                    prictPstmt.setInt(4, 0b0);
+                    less100Index.write("1");
+                    exceed100Index.write("0");
+                    exceed150Index.write("0");
+                    exceed200Index.write("0");
                 } else if (100.0f <= resultSet.getFloat(2) && resultSet.getFloat(2) < 150.0f) {
-                    prictPstmt.setInt(1, 0b0);
-                    prictPstmt.setInt(2, 0b1);
-                    prictPstmt.setInt(3, 0b0);
-                    prictPstmt.setInt(4, 0b0);
-                } else if (150 <= resultSet.getFloat(2) && resultSet.getFloat(2) < 200) {
-                    prictPstmt.setInt(1, 0b0);
-                    prictPstmt.setInt(2, 0b0);
-                    prictPstmt.setInt(3, 0b1);
-                    prictPstmt.setInt(4, 0b0);
-                } else {
-                    prictPstmt.setInt(1, 0b0);
-                    prictPstmt.setInt(2, 0b0);
-                    prictPstmt.setInt(3, 0b0);
-                    prictPstmt.setInt(4, 0b1);
+                    less100Index.write("0");
+                    exceed100Index.write("1");
+                    exceed150Index.write("0");
+                    exceed200Index.write("0");
+                } else if (150.0f <= resultSet.getFloat(2) && resultSet.getFloat(2) < 200.0f) {
+                    less100Index.write("0");
+                    exceed100Index.write("0");
+                    exceed150Index.write("1");
+                    exceed200Index.write("0");
+                } else if (resultSet.getFloat(2) > 200.0f) {
+                    less100Index.write("0");
+                    exceed100Index.write("0");
+                    exceed150Index.write("0");
+                    exceed200Index.write("1");
                 }
 
-                manufacturerPstmt.executeUpdate();
-                prictPstmt.executeUpdate();
+                samsungIndex.newLine();
+                appleIndex.newLine();
+                googleIndex.newLine();
+                xiaomiIndex.newLine();
+                less100Index.newLine();
+                exceed100Index.newLine();
+                exceed150Index.newLine();
+                exceed200Index.newLine();
             }
 
-            manufacturerPstmt.close();
-            prictPstmt.close();
+            samsungIndex.close();
+            appleIndex.close();
+            googleIndex.close();
+            xiaomiIndex.close();
+            less100Index.close();
+            exceed100Index.close();
+            exceed150Index.close();
+            exceed200Index.close();
+
             resultSet.close();
             pstmt.close();
 
         } catch (SQLException e) {
             System.out.println("SQLException: " + e);
+        } catch (IOException e) {
+            System.out.println("IOException: " + e);
         }
 
         System.out.println("BitmapIndexes are created now");
@@ -216,6 +226,14 @@ public class Main {
         try {
             String sql = "select * from devices";
             PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setFetchSize(100);
+            pstmt.execute();
+
+            ResultSet resultSet = pstmt.getResultSet();
+
+            while (resultSet.next()) {
+
+            }
 
         } catch (SQLException e) {
             System.out.println("SQLException = " + e);
